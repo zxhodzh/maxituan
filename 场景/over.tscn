@@ -1,0 +1,69 @@
+[gd_scene load_steps=6 format=3 uid="uid://bi811cd8krt1h"]
+
+[ext_resource type="Script" path="res://脚本/over.gd" id="1_2apvf"]
+[ext_resource type="Texture2D" uid="uid://b7l7mgctrd716" path="res://素材/393204c88fff4715a4b4aa88aabdb2ed.jpg" id="2_ce8by"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2k03t"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vpn20"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_80bky"]
+
+[node name="Over" type="Node2D"]
+script = ExtResource("1_2apvf")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.372, 0.372)
+texture = ExtResource("2_ce8by")
+centered = false
+
+[node name="Button2" type="Label" parent="."]
+offset_left = 414.0
+offset_top = 148.0
+offset_right = 894.0
+offset_bottom = 313.0
+theme_override_colors/font_color = Color(0.823529, 0.243137, 0.223529, 1)
+theme_override_font_sizes/font_size = 120
+text = "恭喜过关"
+
+[node name="Button" type="Button" parent="."]
+process_mode = 3
+offset_left = 630.0
+offset_top = 610.0
+offset_right = 894.0
+offset_bottom = 718.0
+theme_override_colors/font_color = Color(0.235294, 0.890196, 0, 0.615686)
+theme_override_font_sizes/font_size = 64
+theme_override_styles/focus = SubResource("StyleBoxEmpty_2k03t")
+text = "再来一颗
+"
+
+[node name="Button3" type="Button" parent="."]
+process_mode = 3
+offset_left = 10.0
+offset_top = 992.0
+offset_right = 210.0
+offset_bottom = 1067.0
+theme_override_colors/font_color = Color(0.929412, 0.882353, 0.611765, 1)
+theme_override_font_sizes/font_size = 48
+theme_override_styles/focus = SubResource("StyleBoxEmpty_vpn20")
+text = "返回主页
+"
+
+[node name="Button4" type="Button" parent="."]
+process_mode = 3
+offset_left = 1046.0
+offset_top = 972.0
+offset_right = 1118.0
+offset_bottom = 1088.0
+theme_override_colors/font_color = Color(0.0509804, 0.101961, 0.0666667, 1)
+theme_override_font_sizes/font_size = 20
+theme_override_styles/focus = SubResource("StyleBoxEmpty_80bky")
+text = "退
+出
+游
+戏"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Button3" to="." method="_on_button_3_pressed"]
+[connection signal="pressed" from="Button4" to="." method="_on_button_4_pressed"]

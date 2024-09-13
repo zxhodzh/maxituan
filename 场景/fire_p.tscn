@@ -1,0 +1,55 @@
+[gd_scene load_steps=9 format=3 uid="uid://daqu836a84nt1"]
+
+[ext_resource type="Texture2D" uid="uid://wx7xlkg4mkel" path="res://素材/fire1.png" id="1_ar16y"]
+[ext_resource type="Script" path="res://脚本/fire_p.gd" id="1_yj7mh"]
+[ext_resource type="Texture2D" uid="uid://b23j0jhrggdlb" path="res://素材/fire2.png" id="2_4370v"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cukel"]
+atlas = ExtResource("1_ar16y")
+region = Rect2(0, 0, 120, 240)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5vcor"]
+atlas = ExtResource("2_4370v")
+region = Rect2(0, 0, 120, 240)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_v8d6d"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cukel")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5vcor")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3unip"]
+size = Vector2(70, 64)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xt2j6"]
+radius = 60.0
+height = 134.0
+
+[node name="FireP" type="StaticBody2D"]
+script = ExtResource("1_yj7mh")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_v8d6d")
+autoplay = "default"
+frame = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 35)
+shape = SubResource("RectangleShape2D_3unip")
+
+[node name="FireArea2D" type="Area2D" parent="."]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FireArea2D"]
+shape = SubResource("CapsuleShape2D_xt2j6")
+debug_color = Color(0.64005, 0.523952, 0.0729757, 0.42)
+
+[connection signal="body_entered" from="FireArea2D" to="." method="_on_fire_area_2d_body_entered"]

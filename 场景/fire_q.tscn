@@ -1,0 +1,160 @@
+[gd_scene load_steps=20 format=3 uid="uid://cxfk48ttwq7gw"]
+
+[ext_resource type="Script" path="res://脚本/fire_q.gd" id="1_atkdd"]
+[ext_resource type="Texture2D" uid="uid://dtmx7ldid2s5c" path="res://素材/666.png" id="2_qas4o"]
+[ext_resource type="Texture2D" uid="uid://cv0xi4ml5c82w" path="res://素材/999.png" id="3_mcw8y"]
+[ext_resource type="Texture2D" uid="uid://dxij8mygdr5xx" path="res://素材/tile20x4 (10)-export.png" id="3_plgwv"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_85c1h"]
+radius = 22.0907
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hnmxd"]
+atlas = ExtResource("2_qas4o")
+region = Rect2(0, 0, 240, 240)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jwhwm"]
+atlas = ExtResource("3_mcw8y")
+region = Rect2(0, 0, 240, 240)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_sn2cp"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hnmxd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jwhwm")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jsgng"]
+atlas = ExtResource("2_qas4o")
+region = Rect2(0, 0, 240, 240)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wxr3c"]
+atlas = ExtResource("3_mcw8y")
+region = Rect2(0, 0, 240, 240)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_el3sf"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jsgng")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wxr3c")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bi3ti"]
+atlas = ExtResource("2_qas4o")
+region = Rect2(0, 0, 240, 240)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_07cqp"]
+atlas = ExtResource("3_mcw8y")
+region = Rect2(0, 0, 240, 240)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_f8nji"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bi3ti")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_07cqp")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rf36y"]
+atlas = ExtResource("2_qas4o")
+region = Rect2(0, 0, 240, 240)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mxhvr"]
+atlas = ExtResource("3_mcw8y")
+region = Rect2(0, 0, 240, 240)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2ew6k"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rf36y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mxhvr")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xswua"]
+atlas = ExtResource("3_plgwv")
+region = Rect2(0, 0, 240, 240)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_p8oio"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xswua")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="FireQ" type="Node2D"]
+script = ExtResource("1_atkdd")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(24, 221)
+shape = SubResource("CircleShape2D_85c1h")
+
+[node name="Anim" type="Node2D" parent="."]
+
+[node name="Anim1" type="Node2D" parent="Anim"]
+
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="Anim/Anim1"]
+sprite_frames = SubResource("SpriteFrames_sn2cp")
+autoplay = "default"
+offset = Vector2(0, 120)
+flip_v = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Anim/Anim1"]
+sprite_frames = SubResource("SpriteFrames_el3sf")
+autoplay = "default"
+
+[node name="Anim2" type="Node2D" parent="Anim"]
+z_index = 99
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Anim/Anim2"]
+sprite_frames = SubResource("SpriteFrames_f8nji")
+autoplay = "default"
+offset = Vector2(48, 0)
+flip_h = true
+
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="Anim/Anim2"]
+sprite_frames = SubResource("SpriteFrames_2ew6k")
+autoplay = "default"
+offset = Vector2(48, 120)
+flip_h = true
+flip_v = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Anim"]
+sprite_frames = SubResource("SpriteFrames_p8oio")
+offset = Vector2(10, -40)
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

@@ -1,0 +1,51 @@
+[gd_scene load_steps=6 format=3 uid="uid://bwm45h3jnoin2"]
+
+[ext_resource type="Script" path="res://脚本/ready.gd" id="1_um67r"]
+[ext_resource type="Texture2D" uid="uid://bjdxp7ugehswp" path="res://素材/0f71a6bbac0948b68360f9c33b27afa0.jpg" id="2_2mf43"]
+[ext_resource type="AudioStream" uid="uid://bf84pjw83ktgd" path="res://素材/声音/__ - 马戏团 (4).mp3" id="3_xt0pq"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qisgy"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jvwnw"]
+
+[node name="Ready" type="Node2D"]
+script = ExtResource("1_um67r")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-1324, 0)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("2_2mf43")
+centered = false
+
+[node name="Button" type="Button" parent="."]
+process_mode = 3
+offset_left = 351.0
+offset_top = 629.0
+offset_right = 505.0
+offset_bottom = 725.0
+theme_override_colors/font_hover_color = Color(0.831373, 0.431373, 0.270588, 1)
+theme_override_colors/font_pressed_color = Color(0.909804, 0.458824, 0, 1)
+theme_override_colors/font_focus_color = Color(0.760784, 0.372549, 0.176471, 1)
+theme_override_colors/font_color = Color(0.486275, 0.258824, 0, 1)
+theme_override_font_sizes/font_size = 64
+theme_override_styles/focus = SubResource("StyleBoxEmpty_qisgy")
+keep_pressed_outside = true
+text = "start
+"
+
+[node name="Button2" type="Button" parent="."]
+process_mode = 3
+offset_left = 1099.0
+offset_top = 655.0
+offset_right = 1150.0
+offset_bottom = 697.0
+theme_override_colors/font_color = Color(0.360825, 0.226929, 0.0194199, 1)
+theme_override_font_sizes/font_size = 24
+theme_override_styles/focus = SubResource("StyleBoxEmpty_jvwnw")
+text = "exit"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_xt0pq")
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Button2" to="." method="_on_button_2_pressed"]

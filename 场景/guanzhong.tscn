@@ -1,0 +1,31 @@
+[gd_scene load_steps=6 format=3 uid="uid://bmy0ofjw0phev"]
+
+[ext_resource type="Texture2D" uid="uid://dgrq0jbyolam" path="res://素材/tile20x4 (23).png" id="1_pq51o"]
+[ext_resource type="Texture2D" uid="uid://bo35ylsjvfciv" path="res://素材/tile20x4 (24).png" id="2_t0v4d"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pyvp6"]
+atlas = ExtResource("1_pq51o")
+region = Rect2(0, 0, 400, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_68gk8"]
+atlas = ExtResource("2_t0v4d")
+region = Rect2(0, 0, 400, 80)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_p4nev"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pyvp6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_68gk8")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[node name="Guanzhong" type="AnimatedSprite2D"]
+process_mode = 3
+sprite_frames = SubResource("SpriteFrames_p4nev")
+animation = &"idle"
